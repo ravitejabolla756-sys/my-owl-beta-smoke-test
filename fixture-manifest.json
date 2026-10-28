@@ -1,0 +1,94 @@
+{
+  "providerCount": 5,
+  "ruleCount": 10,
+  "providers": ["openai", "anthropic", "github", "supabase", "twilio"],
+  "safeReplacementFixtures": {
+    "openai": "src/safe/openai-replacement.ts",
+    "anthropic": "src/safe/anthropic-replacement.ts",
+    "github": "src/safe/github-replacement.ts",
+    "supabase": "src/safe/supabase-replacement.ts",
+    "twilio": "src/safe/twilio-replacement.ts"
+  },
+  "rules": [
+    {
+      "ruleId": "openai-gpt-4-5-preview-removal-2025-07-14",
+      "providerId": "openai",
+      "positiveFixture": "src/providers/openai/gpt-45-preview.ts",
+      "safeReplacementFixture": "src/safe/openai-replacement.ts",
+      "expectedResultCategory": "AFFECTED",
+      "notes": "Static OpenAI chat completion using model gpt-4.5-preview."
+    },
+    {
+      "ruleId": "openai-assistants-api-sunset-2026-08-26",
+      "providerId": "openai",
+      "positiveFixture": "src/providers/openai/assistants-api.ts",
+      "safeReplacementFixture": "src/safe/openai-replacement.ts",
+      "expectedResultCategory": "AFFECTED",
+      "notes": "Static OpenAI SDK beta.assistants usage representing the Assistants API resource."
+    },
+    {
+      "ruleId": "anthropic-claude-opus-4-1-retirement-2026-08-05",
+      "providerId": "anthropic",
+      "positiveFixture": "src/providers/anthropic/opus-41-retired.ts",
+      "safeReplacementFixture": "src/safe/anthropic-replacement.ts",
+      "expectedResultCategory": "AFFECTED",
+      "notes": "Static Anthropic messages call using claude-opus-4-1-20250805."
+    },
+    {
+      "ruleId": "anthropic-opus-4-7-parameter-restrictions",
+      "providerId": "anthropic",
+      "positiveFixture": "src/providers/anthropic/opus-47-restricted-parameters.ts",
+      "safeReplacementFixture": "src/safe/anthropic-replacement.ts",
+      "expectedResultCategory": "AFFECTED",
+      "notes": "Static Claude Opus 4.7 call with non-default temperature, top_p, and top_k."
+    },
+    {
+      "ruleId": "github-organization-security-fields-removed-2026-04-21",
+      "providerId": "github",
+      "positiveFixture": "src/providers/github/organization-security-fields.ts",
+      "safeReplacementFixture": "src/safe/github-replacement.ts",
+      "expectedResultCategory": "AFFECTED",
+      "notes": "Static Octokit organization response access for all seven removed security fields."
+    },
+    {
+      "ruleId": "github-synchronous-sbom-endpoint-removal-2026-11-13",
+      "providerId": "github",
+      "positiveFixture": "src/providers/github/synchronous-sbom.ts",
+      "safeReplacementFixture": "src/safe/github-replacement.ts",
+      "expectedResultCategory": "AFFECTED",
+      "notes": "Static Octokit request to /{owner}/{repo}/dependency-graph/sbom."
+    },
+    {
+      "ruleId": "supabase-management-logs-all-removal-2026-09-23",
+      "providerId": "supabase",
+      "positiveFixture": "src/providers/supabase/logs-all.ts",
+      "safeReplacementFixture": "src/safe/supabase-replacement.ts",
+      "expectedResultCategory": "AFFECTED",
+      "notes": "Static Supabase Management API endpoint value analytics/endpoints/logs.all; no request is made."
+    },
+    {
+      "ruleId": "supabase-openapi-anon-key-access-2026-03-11",
+      "providerId": "supabase",
+      "positiveFixture": "src/providers/supabase/openapi-anon-key.ts",
+      "safeReplacementFixture": "src/safe/supabase-replacement.ts",
+      "expectedResultCategory": "AFFECTED",
+      "notes": "Static Supabase client configured with the named anon key and /rest/v1/ OpenAPI root."
+    },
+    {
+      "ruleId": "twilio-regional-api-domain-removal-2026-04-28",
+      "providerId": "twilio",
+      "positiveFixture": "src/providers/twilio/regional-api-domain.ts",
+      "safeReplacementFixture": "src/safe/twilio-replacement.ts",
+      "expectedResultCategory": "AFFECTED",
+      "notes": "Static Twilio SDK usage paired with deprecated regional domain api.ie1.twilio.com."
+    },
+    {
+      "ruleId": "twilio-studio-engagements-endpoint-deprecated",
+      "providerId": "twilio",
+      "positiveFixture": "src/providers/twilio/studio-engagements.ts",
+      "safeReplacementFixture": "src/safe/twilio-replacement.ts",
+      "expectedResultCategory": "AFFECTED",
+      "notes": "Static Twilio Studio endpoint value /Engagements."
+    }
+  ]
+}

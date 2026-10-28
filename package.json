@@ -1,0 +1,11 @@
+{
+  "name": "my-owl-beta-smoke-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static-analysis fixtures for MY OWL beta compatibility validation.",
+  "type": "module",
+  "scripts": {
+    "verify": "node scripts/verify-fixtures.mjs",
+    "typecheck": "tsc --noEmit"
+  }
+}
